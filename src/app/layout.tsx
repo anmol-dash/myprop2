@@ -1,13 +1,19 @@
 "use client";
 
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import ScrollToTop from "@/components/ScrollToTop";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "node_modules/react-modal-video/css/modal-video.css";
-import "../styles/index.css";
+import "./globals.css";
+import { Providers } from "./providers";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "My Property - Fractional Commercial Real Estate Investment",
+  description: "Invest in commercial real estate properties with as little as $100. My Property creates a secondary market for commercial real estate that allows large investors to sell shares of their properties.",
+};
 
 export default function RootLayout({
   children,
@@ -33,5 +39,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-import { Providers } from "./providers";
