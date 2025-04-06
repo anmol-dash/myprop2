@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Property } from '@/types/property';
-import { useToast } from '@/context/ToastContext';
+import { useToast } from '../../context/ToastContext';
 
 interface PropertyCardProps {
   property: Property;
