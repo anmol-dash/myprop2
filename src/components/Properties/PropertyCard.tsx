@@ -1,13 +1,17 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Property } from '@/types/property';
+import { useToast } from '@/context/ToastContext';
 
 interface PropertyCardProps {
   property: Property;
 }
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
+  const { showToast } = useToast();
+  
   const {
     id,
     image,
@@ -21,9 +25,18 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
     type
   } = property;
 
+  const handleInvestClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    showToast("Coming soon!");
+  };
+
   return (
     <div className="overflow-hidden rounded-lg bg-white shadow-one dark:bg-dark">
-      <Link href={`/properties/${id}`} className="relative block h-[230px] w-full">
+      <a 
+        href="#" 
+        onClick={handleInvestClick} 
+        className="relative block h-[230px] w-full"
+      >
         <span className="absolute top-6 right-6 z-20 inline-flex items-center justify-center rounded-full bg-primary py-2 px-4 text-sm font-semibold capitalize text-white">
           {type}
         </span>
@@ -33,15 +46,16 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
           fill
           className="object-cover object-center"
         />
-      </Link>
+      </a>
       <div className="p-6 sm:p-8">
         <h3>
-          <Link
-            href={`/properties/${id}`}
+          <a
+            href="#"
+            onClick={handleInvestClick}
             className="mb-4 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl"
           >
             {title}
-          </Link>
+          </a>
         </h3>
         <div className="mb-6 flex items-center">
           <div className="mr-5 flex items-center">
@@ -110,12 +124,13 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
             </span>
           </div>
           <div>
-            <Link
-              href={`/properties/${id}`}
+            <a
+              href="#"
+              onClick={handleInvestClick}
               className="inline-flex items-center justify-center rounded-md bg-primary py-3 px-6 text-center text-base font-medium text-white hover:bg-opacity-90"
             >
               Invest Now
-            </Link>
+            </a>
           </div>
         </div>
       </div>
